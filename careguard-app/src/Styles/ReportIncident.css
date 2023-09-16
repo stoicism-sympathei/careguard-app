@@ -1,0 +1,100 @@
+/* ReportIncident.css */
+
+/* Main Container */
+.report-incident-container {
+  font-family: "Merienda One", cursive;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  background-color: #f8f8f8; /* Background color */
+}
+
+/* Header */
+header {
+  background-color: #5d0137; /* Header background color */
+  color: white; /* Header text color */
+  padding: 20px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+/* Logo */
+.logo {
+  height: 60px;
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+
+/* Title */
+.report-incident-title {
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+/* Form Container */
+.incident-form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+/* Form Labels */
+label {
+  display: block;
+  margin-top: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="datetime-local"],
+input[type="tel"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Severity Level Select */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('../logo/my.png') no-repeat right center;
+  background-size: 20px;
+  padding-right: 30px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #5d0137; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Button Hover Effect */
+button[type="submit"]:hover {
+  background-color: #6f2f40; /* Hover background color */
+}
+
+/* Footer */
+footer {
+  /* Add footer styles as needed */
+}
+

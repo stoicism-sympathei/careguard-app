@@ -1,33 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-maps';
+import './App.css';
+
+// Import other components here
+import DashboardComponent from './components/Dashboard'; // Renamed to DashboardComponent
 import LandingPage from './components/LandingPage';
-import RegistrationPage from './components/RegistrationPage';
 import LoginPage from './components/LoginPage';
-import Dashboard from './components/Dashboard';
+import RegistrationPage from './components/RegistrationPage';
+import SmsNotificationsPage from './components/SmsNotificationsPage';
+import ReportIncident from './components/ReportIncident';
+import ProfilePage from './components/ProfilePage'; // Import the ProfilePage component
+
+const WrappedMap = withScriptjs(
+  withGoogleMap(props => (
+    <GoogleMap defaultZoom={10} defaultCenter={{ lat: 0, lng: 0 }}>
+      {/* Add your map components here */}
+    </GoogleMap>
+  ))
+);
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        {/* Define the navigation header or any shared components */}
-        {/* For example, a navigation bar can go here */}
-        
-        <Switch>
-          {/* Landing Page */}
-          <Route exact path="/" component={LandingPage} />
-
-          {/* Registration Page */}
-          <Route path="/register" component={RegistrationPage} />
-
-          {/* Login Page */}
-          <Route path="/login" component={LoginPage} />
-
-          {/* Dashboard */}
-          <Route path="/dashboard" component={Dashboard} />
-
-          {/* Add more routes for other pages and components */}
-        </Switch>
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/dashboard/*" element={<DashboardComponent />}>
+          {/* Add child routes for Dashboard */}
+          <Route path="report-incident" element={<ReportIncident />} />
+          <Route path="profile" element={<ProfilePage />} />
+          {/* Add other child routes as needed */}
+        </Route>
+        <Route path="/sms-notifications" element={<SmsNotificationsPage />} /> {/* Add a route for SMS notifications */}
+      </Routes>
     </Router>
   );
 }

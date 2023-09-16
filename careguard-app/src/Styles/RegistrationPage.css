@@ -1,0 +1,76 @@
+/* Overall container styling */
+.registration-page {
+  width: 100%; /* Ensure the container takes up the full width */
+  height: 100vh; /* Make the container full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-image: url("../images/Registeration.jpg");
+  background-size: cover; /* Cover the entire container */
+  background-position: center center;
+}
+
+
+/* Heading styling */
+.registration-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Form input styling */
+.registration-page input[type="text"],
+.registration-page input[type="email"],
+.registration-page input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Submit button styling */
+.registration-page button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.registration-page button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styling */
+.registration-page .error-message {
+  color: #ff0000;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Additional styling as needed */
+
+/* Example: Style links or other elements */
+.registration-page a {
+  color: #007BFF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.registration-page a:hover {
+  color: #0056b3;
+}
+

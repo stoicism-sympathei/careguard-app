@@ -1,0 +1,99 @@
+/* Dashboard.css */
+
+/* Dashboard Container */
+.dashboard-container {
+  background-color: #333;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.dashboard-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+  filter: brightness(0.7); /* Darken the logo */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #007bff; /* Change the color on hover */
+}
+
+/* Dashboard Title and Subtitle */
+.dashboard-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.dashboard-subtitle {
+  font-size: 18px;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+/* Overview Cards */
+.dashboard-overview {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.overview-card {
+  flex: 1;
+  background-color: #007bff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.overview-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.overview-card p {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Add more styles as needed */
+

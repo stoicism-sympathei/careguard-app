@@ -1,0 +1,70 @@
+.sms-container {
+  font-family: "Merienda One", cursive;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Header */
+.sms-header {
+  font-size: 32px;
+  color: #5d0137;
+  margin-bottom: 20px;
+}
+
+/* Notification List */
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notification-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.notification-message {
+  color: #555;
+}
+
+/* Button */
+.back-button {
+  text-decoration: none;
+  background-color: #5d0137;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #500619;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .sms-header {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sms-header {
+    font-size: 20px;
+  }
+}
+
