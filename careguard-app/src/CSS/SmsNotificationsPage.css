@@ -1,0 +1,57 @@
+/* SmsNotificationsPage.css */
+
+.sms-notifications-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sms-notifications-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.notification-preferences {
+  margin-bottom: 20px;
+}
+
+.notification-preference-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.notification-list {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.notification-list h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.notification-details {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.notification-details strong {
+  font-weight: bold;
+}
+
+.notification-details p {
+  margin: 10px 0;
+}
+
+.notification-details small {
+  color: #888;
+}
+
+/* Customize additional styles as needed */
+

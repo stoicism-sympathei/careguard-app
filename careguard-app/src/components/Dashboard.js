@@ -1,9 +1,10 @@
+// MainDashboard.js
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import '../Styles/Dashboard.css';
+import '../CSS/Dashboard.css';
 import logo from '../logo/my.png';
 
-function Dashboard() {
+function MainDashboard() {
   return (
     <div className="dashboard-container">
       <header>
@@ -21,10 +22,13 @@ function Dashboard() {
             <Link to="/dashboard/profile" className="nav-link">
               Profile
             </Link>
+            <Link to="/dashboard/sms-notifications" className="nav-link">
+              SMS Notifications
+            </Link>
             {/* Add other links as needed */}
           </nav>
         </div>
-        <h1 className="dashboard-title">Dashboard</h1>
+        <h1 className="dashboard-title">CareGuard</h1>
         <p className="dashboard-subtitle">Your Safety, Our Priority</p>
       </header>
       <section>
@@ -42,15 +46,13 @@ function Dashboard() {
         </div>
       </section>
       <section>
-        {/* Add other dashboard features such as incident reporting, safety alerts, etc. */}
-        <Outlet /> {/* This is where child routes will be rendered */}
+        {/* This is where child routes will be rendered */}
+        <Outlet />
       </section>
-      <footer>
-        {/* Add footer content and links */}
-      </footer>
+      <footer>{/* Add footer content and links */}</footer>
     </div>
   );
 }
 
-export default Dashboard;
+export default MainDashboard;
 

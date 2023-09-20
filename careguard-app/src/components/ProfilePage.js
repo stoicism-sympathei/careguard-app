@@ -1,7 +1,7 @@
 // ProfilePage.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Styles/ProfilePage.css'; // Import your CSS file for this page
+import '../CSS/ProfilePage.css'; // Import your CSS file for this page
 import logo from '../logo/my.png'; // Your app logo
 
 function ProfilePage() {

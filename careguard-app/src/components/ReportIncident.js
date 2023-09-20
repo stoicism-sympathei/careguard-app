@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Styles/ReportIncident.css'; // Import your CSS file for this page
-import logo from '../logo/my.png'; // Your app logo
+import axios from 'axios';
+import logo from '../logo/my.png';
 
 function ReportIncident() {
-  // Define state variables for form inputs
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [incidentType, setIncidentType] = useState('');
@@ -13,118 +12,218 @@ function ReportIncident() {
   const [contactName, setContactName] = useState('');
   const [contactPhone, setContactPhone] = useState('');
   const [contactEmail, setContactEmail] = useState('');
+  const [submissionStatus, setSubmissionStatus] = useState('');
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform form validation and submit the incident report
-    // You can add your submission logic here
+
+    const incidentData = {
+      date,
+      location,
+      incidentType,
+      description,
+      severity,
+      contactName,
+      contactPhone,
+      contactEmail,
+    };
+
+    axios
+      .post('/api/incidents', incidentData)
+      .then((response) => {
+        if (response.status === 200) {
+          setSubmissionStatus('Your incident report was successfully submitted.');
+          setTimeout(() => {
+            setSubmissionStatus('');
+          }, 5000);
+        } else {
+          setSubmissionStatus('Sorry, there was an issue submitting your incident report.');
+          setTimeout(() => {
+            setSubmissionStatus('');
+          }, 5000);
+        }
+      })
+      .catch((error) => {
+        console.error('Error submitting incident report:', error);
+        setSubmissionStatus('Sorry, there was an issue submitting your incident report.');
+        setTimeout(() => {
+          setSubmissionStatus('');
+        }, 5000);
+      });
+  };
+
+  const styles = {
+    container: {
+      fontFamily: 'Arial, sans-serif',
+      padding: '20px',
+      minHeight: '100vh',
+      backgroundColor: '#f4f4f4',
+    },
+    header: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: '#007BFF',
+      padding: '20px',
+      marginBottom: '20px',
+    },
+    logo: {
+      width: '100px',
+      height: 'auto',
+    },
+    title: {
+      fontSize: '24px',
+      color: '#fff',
+    },
+    formContainer: {
+      backgroundColor: '#fff',
+      padding: '20px',
+      borderRadius: '5px',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    input: {
+      margin: '10px 0',
+      padding: '10px',
+      borderRadius: '5px',
+      border: '1px solid #ccc',
+      fontSize: '16px',
+    },
+    select: {
+      margin: '10px 0',
+      padding: '10px',
+      borderRadius: '5px',
+      border: '1px solid #ccc',
+      fontSize: '16px',
+    },
+    button: {
+      backgroundColor: '#007BFF',
+      color: '#fff',
+      padding: '10px',
+      borderRadius: '5px',
+      border: 'none',
+      fontSize: '16px',
+      cursor: 'pointer',
+    },
+    successMessage: {
+      backgroundColor: 'green',
+      color: 'white',
+      padding: '10px',
+      textAlign: 'center',
+      borderRadius: '5px',
+      marginTop: '10px',
+    },
+    errorMessage: {
+      backgroundColor: 'red',
+      color: 'white',
+      padding: '10px',
+      textAlign: 'center',
+      borderRadius: '5px',
+      marginTop: '10px',
+    },
   };
 
   return (
-    <div className="report-incident-container">
-      <header>
-        <div className="nav-container">
-          <Link to="/" className="logo-link">
-            <img src={logo} alt="Logo" className="logo" />
+    <div style={styles.container}>
+      <header style={styles.header}>
+        <div>
+          <Link to="/">
+            <img src={logo} alt="Logo" style={styles.logo} />
           </Link>
-          <nav>
-            <Link to="/dashboard" className="nav-link">
-              Dashboard
-            </Link>
-            {/* Add other navigation links */}
-          </nav>
         </div>
-        <h1 className="report-incident-title">Report Incident</h1>
+        <h1 style={styles.title}>Report Incident</h1>
       </header>
       <section>
-        <form className="incident-form" onSubmit={handleSubmit}>
-          {/* Date and Time Input */}
-          <label htmlFor="date">Date and Time</label>
-          <input
-            type="datetime-local"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-
-          {/* Location Input */}
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          />
-
-          {/* Incident Type Input */}
-          <label htmlFor="incidentType">Incident Type</label>
-          <input
-            type="text"
-            id="incidentType"
-            value={incidentType}
-            onChange={(e) => setIncidentType(e.target.value)}
-            required
-          />
-
-          {/* Description Input */}
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            rows="4"
-            required
-          ></textarea>
-
-          {/* Severity Level Input */}
-          <label>Severity Level</label>
-          <select
-            value={severity}
-            onChange={(e) => setSeverity(e.target.value)}
-            required
-          >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-
-          {/* Contact Information Inputs */}
-          <label htmlFor="contactName">Your Name</label>
-          <input
-            type="text"
-            id="contactName"
-            value={contactName}
-            onChange={(e) => setContactName(e.target.value)}
-            required
-          />
-
-          <label htmlFor="contactPhone">Phone Number</label>
-          <input
-            type="tel"
-            id="contactPhone"
-            value={contactPhone}
-            onChange={(e) => setContactPhone(e.target.value)}
-            required
-          />
-
-          <label htmlFor="contactEmail">Email</label>
-          <input
-            type="email"
-            id="contactEmail"
-            value={contactEmail}
-            onChange={(e) => setContactEmail(e.target.value)}
-            required
-          />
-
-          <button type="submit">Submit</button>
-        </form>
+        <div style={styles.formContainer}>
+          <form style={styles.form} onSubmit={handleSubmit}>
+            <input
+              type="datetime-local"
+              placeholder="Date and Time"
+              style={styles.input}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Location"
+              style={styles.input}
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Incident Type"
+              style={styles.input}
+              value={incidentType}
+              onChange={(e) => setIncidentType(e.target.value)}
+              required
+            />
+            <textarea
+              placeholder="Description"
+              style={styles.input}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows="4"
+              required
+            ></textarea>
+            <select
+              style={styles.select}
+              value={severity}
+              onChange={(e) => setSeverity(e.target.value)}
+              required
+            >
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Your Name"
+              style={styles.input}
+              value={contactName}
+              onChange={(e) => setContactName(e.target.value)}
+              required
+            />
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              style={styles.input}
+              value={contactPhone}
+              onChange={(e) => setContactPhone(e.target.value)}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              style={styles.input}
+              value={contactEmail}
+              onChange={(e) => setContactEmail(e.target.value)}
+              required
+            />
+            <button type="submit" style={styles.button}>
+              Submit
+            </button>
+          </form>
+          {/* Submission status message */}
+          {submissionStatus && (
+            <div
+              style={
+                submissionStatus.includes('successfully')
+                  ? styles.successMessage
+                  : styles.errorMessage
+              }
+            >
+              {submissionStatus}
+            </div>
+          )}
+        </div>
       </section>
-      <footer>
-        {/* Add footer content and links */}
-      </footer>
+      <footer>{/* Add footer content and links */}</footer>
     </div>
   );
 }

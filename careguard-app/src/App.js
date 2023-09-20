@@ -4,13 +4,14 @@ import { GoogleMap, Marker, withScriptjs, withGoogleMap } from 'react-google-map
 import './App.css';
 
 // Import other components here
-import DashboardComponent from './components/Dashboard'; // Renamed to DashboardComponent
+import MainDashboard from './components/MainDashboard'; // Update the import statement
 import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
-import RegistrationPage from './components/RegistrationPage';
 import SmsNotificationsPage from './components/SmsNotificationsPage';
 import ReportIncident from './components/ReportIncident';
 import ProfilePage from './components/ProfilePage'; // Import the ProfilePage component
+import RegistrationPage from './components/RegistrationPage'; // Import your RegistrationPage component
+
 
 const WrappedMap = withScriptjs(
   withGoogleMap(props => (
@@ -20,20 +21,26 @@ const WrappedMap = withScriptjs(
   ))
 );
 
+// Define the DashboardHome component or replace it with a valid component
+const DashboardHome = () => {
+  return <div>Dashboard Home Page Content</div>;
+};
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/dashboard/*" element={<DashboardComponent />}>
-          {/* Add child routes for Dashboard */}
+        <Route path="/dashboard" element={<MainDashboard />}> {/* Update the element */}
+          {/* Child routes for Dashboard */}
+          <Route index element={<DashboardHome />} /> {/* Dashboard Home Page */}
           <Route path="report-incident" element={<ReportIncident />} />
           <Route path="profile" element={<ProfilePage />} />
           {/* Add other child routes as needed */}
         </Route>
-        <Route path="/sms-notifications" element={<SmsNotificationsPage />} /> {/* Add a route for SMS notifications */}
+        <Route path="/sms-notifications" element={<SmsNotificationsPage />} /> {/* SMS Notifications Page */}
+	<Route path="/registration" element={<RegistrationPage />} />
       </Routes>
     </Router>
   );

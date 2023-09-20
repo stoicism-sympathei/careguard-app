@@ -1,39 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import '../Styles/SmsNotificationsPage.css'; // Import your CSS file for this page
+import { useNavigate } from 'react-router-dom';
+import '../CSS/SmsNotificationsPage.css'; // Import your CSS file for this page
 
 function SmsNotificationsPage() {
-  // Sample SMS notifications data
   const [notifications, setNotifications] = useState([]);
-
-  useEffect(() => {
-    // Fetch SMS notifications from an API or database
-    // Update the 'notifications' state with the fetched data
-    const fetchNotifications = async () => {
-      try {
-        // Replace with your API call to fetch SMS notifications
-        const response = await fetch('/api/sms-notifications');
-        if (response.ok) {
-          const data = await response.json();
-          setNotifications(data);
-        } else {
-          throw new Error('Failed to fetch notifications.');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchNotifications();
-  }, []);
-
-  // Sample user preferences
   const [notificationPreferences, setNotificationPreferences] = useState({
     emergencyAlerts: true,
     updates: true,
     communityMessages: true,
   });
 
-  // Handle changes in notification preferences
+  const fetchNotifications = async () => {
+    try {
+      // Replace with your API call to fetch SMS notifications
+      const response = await fetch('/api/sms-notifications');
+      if (response.ok) {
+        const data = await response.json();
+        setNotifications(data.notifications);
+        setNotificationPreferences(data.preferences);
+      } else {
+        throw new Error('Failed to fetch notifications.');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNotifications();
+  }, []);
+
   const handlePreferenceChange = (event) => {
     const { name, checked } = event.target;
     setNotificationPreferences((prevPreferences) => ({

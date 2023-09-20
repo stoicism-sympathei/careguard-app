@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // or "ES5" depending on your target environment
+    "module": "CommonJS",
+    "outDir": "./dist", // specify your output directory
+    "rootDir": "./src" // specify your source directory
+  }
+}
+
