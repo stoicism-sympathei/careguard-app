@@ -73,7 +73,7 @@ login using your registration information
 
 - **Community Safety Statistics**: Access and analyze community safety statistics for better decision-making.
 
-![Alt Text](../src/images/Screenshot from 2023-09-20 03-47-09.png)
+![Alt Text](../src/images/Screens.png)
 
 ### Contributing:
 
