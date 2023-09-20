@@ -29,11 +29,13 @@ Usage <a name="usage"></a>
 
 # Start the development server
 npm start
+node server.js
 register on sign up page then
 login using your registration information
  
 
-Technologies Used <a name="technologies-used"></a>
+## Technologies Used 
+
 ### Frontend Technologies:
 
 - **React**: A powerful JavaScript library for building interactive user interfaces. React's component-based architecture will help create a dynamic and responsive frontend.
@@ -58,7 +60,6 @@ Technologies Used <a name="technologies-used"></a>
 
 - **JSON Web Tokens (JWT)**: Implementing secure user authentication and authorization.
 
-Features <a name="features"></a>
 
 ### Features:
 
@@ -67,18 +68,19 @@ Features <a name="features"></a>
 - **Emergency Response Coordination**: Facilitate coordination among emergency responders and community members during incidents.
 
 - **Community Safety Statistics**: Access and analyze community safety statistics for better decision-making.
-## Contributing
+
+### Contributing:
 
 If you'd like to contribute to this project, please reach out to me:
 
 **Moges Amane**  
-- Email: [Your Email Address](mailto:your-email@example.com)
-- Twitter: [@YourTwitterHandle](https://twitter.com/your-twitter-handle)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/your-linkedin-profile)
+- Email: [Gmail](mailto:mogesanonymous@gmail.com)
+- X: [X](https://x.com/your-X-handle)
+- LinkedIn: [](https://www.linkedin.com/in/your-linkedin-profile)
 
 Feel free to get in touch, and let's collaborate to make this project even better!
 
-## License <a name="license"></a>
+### License:
 
 This project is currently not licensed.
 
