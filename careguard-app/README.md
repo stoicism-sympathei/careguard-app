@@ -32,6 +32,8 @@ npm start
 node server.js
 register on sign up page then
 login using your registration information
+
+![Alt Text](../src/images/Screenshot from 2023-09-20 03-43-47.png)
  
 
 ## Technologies Used 
@@ -47,6 +49,8 @@ login using your registration information
 - **Material-UI**: UI frameworks that offer pre-designed components and styles for faster development and consistent design.
 
 - **Google Maps API**: For implementing a map for visualizing incident locations, these libraries can help integrate maps seamlessly into my frontend.
+
+![Alt Text](../src/images/Screenshot from 2023-09-20 03-46-09.png)
 
 ### Backend Technologies:
 
@@ -68,6 +72,8 @@ login using your registration information
 - **Emergency Response Coordination**: Facilitate coordination among emergency responders and community members during incidents.
 
 - **Community Safety Statistics**: Access and analyze community safety statistics for better decision-making.
+
+![Alt Text](../src/images/Screenshot from 2023-09-20 03-47-09.png)
 
 ### Contributing:
 
