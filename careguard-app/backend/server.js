@@ -46,6 +46,9 @@ const User = mongoose.model('User', {
 // Sample Incident model (replace with your actual Incident model)
 const Incident = require('./incident');
 
+// Import your ReportingHistory model or schema here
+const ReportingHistory = require('./models/reportingHistory');
+
 // Registration API route
 app.post('/api/register', async (req, res) => {
   try {
@@ -65,6 +68,39 @@ app.post('/api/register', async (req, res) => {
     // Handle errors and respond with an error message
     console.error('Registration error:', error);
     res.status(500).json({ success: false, message: 'Registration failed' });
+  }
+});
+
+// Sample data for demonstration (replace this with your actual admin data retrieval logic)
+const adminData = [
+  { id: 1, description: 'Admin Data 1' },
+  { id: 2, description: 'Admin Data 2' },
+  // Add more admin data objects as needed
+];
+
+// Define a route to fetch admin data (replace with your actual admin data retrieval logic)
+app.get('/api/admin-data', (req, res) => {
+  try {
+    // Respond with the sample adminData as JSON (or replace with your data retrieval logic)
+    res.json(adminData);
+  } catch (error) {
+    // Handle errors and respond with an error message
+    console.error('Error fetching admin data:', error);
+    res.status(500).json({ success: false, message: 'Error fetching admin data' });
+  }
+});
+
+// Define a route to fetch reporting history
+app.get('/api/reporting-history', async (req, res) => {
+  try {
+    // Fetch reporting history data from the database
+    const reportingHistory = await ReportingHistory.find();
+
+    // Respond with the reporting history data as JSON
+    res.json(reportingHistory);
+  } catch (error) {
+    console.error('Error fetching reporting history:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
@@ -114,6 +150,27 @@ app.get('/dashboard/total-incidents', async (req, res) => {
     res.status(500).json({ success: false, message: 'Error fetching total incidents' });
   }
 });
+
+// Define a route to fetch incidents by type
+app.get('/api/incidents', async (req, res) => {
+  try {
+    const { type } = req.query;
+    let query = {};
+
+    if (type) {
+      query = { type }; // Filter by incident type if provided
+    }
+
+    const incidents = await Incident.find(query);
+
+    res.json(incidents);
+  } catch (error) {
+    console.error('Error fetching incidents:', error);
+    res.status(500).json({ success: false, message: 'Error fetching incidents' });
+  }
+});
+
+
 
 // Define a route to get safety alerts
 app.get('/dashboard/safety-alerts', async (req, res) => {

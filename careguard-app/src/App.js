@@ -11,6 +11,9 @@ import SmsNotificationsPage from './components/SmsNotificationsPage';
 import ReportIncident from './components/ReportIncident';
 import ProfilePage from './components/ProfilePage'; // Import the ProfilePage component
 import RegistrationPage from './components/RegistrationPage'; // Import your RegistrationPage component
+import ReportingHistoryPage from './components/ReportingHistoryPage'; // Import the ReportingHistoryPage component
+import AdminAccessPage from './components/AdminAccessPage'; // Import the AdminAccessPage component
+import RealTimeUpdatesPage from './components/RealTimeUpdatesPage'; // Import the RealTimeUpdatesPage component
 
 
 const WrappedMap = withScriptjs(
@@ -37,9 +40,15 @@ function App() {
           <Route index element={<DashboardHome />} /> {/* Dashboard Home Page */}
           <Route path="report-incident" element={<ReportIncident />} />
           <Route path="profile" element={<ProfilePage />} />
-          {/* Add other child routes as needed */}
+	  <Route path="real-time-updates" element={<RealTimeUpdatesPage />} /> {/* Real-Time Updates Page */}
+          <Route path="reporting-history" element={<ReportingHistoryPage />} /> {/* Reporting History Page */}
+          <Route path="admin-access" element={<AdminAccessPage />} /> {/* Admin Access Page */}
+	  <Route path="sms-notifications" element={<SmsNotificationsPage />} /> {/* SMS Notifications Page */}
+
+
+       
         </Route>
-        <Route path="/sms-notifications" element={<SmsNotificationsPage />} /> {/* SMS Notifications Page */}
+        
 	<Route path="/registration" element={<RegistrationPage />} />
       </Routes>
     </Router>

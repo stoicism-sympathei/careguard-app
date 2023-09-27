@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../CSS/SmsNotificationsPage.css'; // Import your CSS file for this page
 
 function SmsNotificationsPage() {
   const [notifications, setNotifications] = useState([]);
@@ -39,15 +38,15 @@ function SmsNotificationsPage() {
   };
 
   return (
-    <div className="sms-notifications-container">
+    <div style={styles.smsNotificationsContainer}>
       <header>
-        <h1 className="sms-notifications-title">SMS Notifications</h1>
+        <h1 style={styles.smsNotificationsTitle}>SMS Notifications</h1>
       </header>
       <section>
         {/* Notification Preferences */}
-        <div className="notification-preferences">
+        <div style={styles.notificationPreferences}>
           <h2>Notification Preferences</h2>
-          <label className="notification-preference-label">
+          <label style={styles.notificationPreferenceLabel}>
             <input
               type="checkbox"
               name="emergencyAlerts"
@@ -56,7 +55,7 @@ function SmsNotificationsPage() {
             />
             Receive Emergency Alerts
           </label>
-          <label className="notification-preference-label">
+          <label style={styles.notificationPreferenceLabel}>
             <input
               type="checkbox"
               name="updates"
@@ -65,7 +64,7 @@ function SmsNotificationsPage() {
             />
             Receive Updates
           </label>
-          <label className="notification-preference-label">
+          <label style={styles.notificationPreferenceLabel}>
             <input
               type="checkbox"
               name="communityMessages"
@@ -77,12 +76,12 @@ function SmsNotificationsPage() {
         </div>
 
         {/* List of Notifications */}
-        <div className="notification-list">
+        <div style={styles.notificationList}>
           <h2>Notifications</h2>
           <ul>
             {notifications.map((notification) => (
               <li key={notification.id}>
-                <div className="notification-details">
+                <div style={styles.notificationDetails}>
                   <strong>From: {notification.sender}</strong>
                   <p>{notification.message}</p>
                   <small>Received on: {notification.timestamp}</small>
@@ -98,6 +97,39 @@ function SmsNotificationsPage() {
     </div>
   );
 }
+
+const styles = {
+  smsNotificationsContainer: {
+    maxWidth: '800px',
+    margin: '0 auto',
+    padding: '20px',
+    backgroundColor: '#fff',
+    border: '1px solid #ccc',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  },
+  smsNotificationsTitle: {
+    fontSize: '24px',
+    marginBottom: '20px',
+  },
+  notificationPreferences: {
+    marginBottom: '20px',
+  },
+  notificationPreferenceLabel: {
+    display: 'block',
+    marginBottom: '10px',
+    fontSize: '16px',
+  },
+  notificationList: {
+    borderTop: '1px solid #ccc',
+    paddingTop: '20px',
+  },
+  notificationDetails: {
+    backgroundColor: '#f9f9f9',
+    border: '1px solid #ccc',
+    padding: '10px',
+    marginBottom: '10px',
+  },
+};
 
 export default SmsNotificationsPage;
 

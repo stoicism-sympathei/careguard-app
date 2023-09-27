@@ -1,38 +1,49 @@
-// Import required dependencies
-const express = require('express');
-const router = express.Router();
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-// Define an API route for reporting incidents
-router.post('/api/report-incident', (req, res) => {
-  // Handle the incident report logic and save it to the database
-  const {
-    date,
-    location,
-    incidentType,
-    description,
-    severity,
-    contactName,
-    contactPhone,
-    contactEmail,
-  } = req.body;
+function ReportIncident() {
+  const [incidents, setIncidents] = useState([]);
+  const [selectedType, setSelectedType] = useState('');
 
-  // Example response
-  const incidentReport = {
-    date,
-    location,
-    incidentType,
-    description,
-    severity,
-    contactName,
-    contactPhone,
-    contactEmail,
-  };
+  useEffect(() => {
+    // Function to fetch incidents by type
+    const fetchIncidentsByType = async () => {
+      try {
+        const response = await axios.get(`/api/incidents?type=${selectedType}`);
+        if (response.status === 200) {
+          setIncidents(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching incidents:', error);
+      }
+    };
 
-  // You can add your logic here to save the incident report to the database
+    // Fetch incidents when the component mounts or when selectedType changes
+    fetchIncidentsByType();
+  }, [selectedType]);
 
-  res.json({ success: true, message: 'Incident reported successfully', data: incidentReport });
-});
+  return (
+    <div>
+      <h2>Report Incident</h2>
+      {/* Your incident reporting form goes here */}
+      
+      <label>Select Incident Type:</label>
+      <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
+        <option value="">All</option>
+        <option value="type1">Type 1</option>
+        <option value="type2">Type 2</option>
+        {/* Add more options for incident types */}
+      </select>
+      
+      <h3>Incidents</h3>
+      <ul>
+        {incidents.map((incident) => (
+          <li key={incident.id}>{incident.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-// Export the router
-module.exports = router;
+export default ReportIncident;
 
